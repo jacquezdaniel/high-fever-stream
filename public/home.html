@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>High Fever Live</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Coiny|Rubik"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+  </head>
+  <body>
+    <nav>
+      <div class="nav-wrapper purple white">
+        <a href="#" class="brand-logo center black-text">High Fever Radio</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down"></ul>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="container">
+          <div class="col s12 m12">
+            <img id="image" class="responsive-img" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <h4 class="center">Music List</h4>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.dev.js"></script>
+    <script>
+      const socket = io.connect("http://localhost:3000");
+      socket.on("image", (image) => {
+        const imageElm = document.getElementById("image");
+        imageElm.src = `data:image/jpeg;base64,${image}`;
+      });
+    </script>
+  </body>
+</html>
