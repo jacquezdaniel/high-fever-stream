@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>High Fever Live</title>
+    <title>HFL</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
@@ -19,30 +19,52 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
+    <link href="https://vjs.zencdn.net/7.7.5/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css" />
   </head>
   <body>
     <nav>
-      <div class="nav-wrapper purple white">
-        <a href="#" class="brand-logo center black-text">High Fever Radio</a>
+      <div id="nav" class="nav-wrapper white">
+        <a href="#" class="brand-logo black-text">High Fever Live</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down"></ul>
       </div>
     </nav>
     <div class="container">
-      <div class="row">
-        <div class="container">
-          <div class="col s12 m12">
-            <img id="image" class="responsive-img" />
+      <div class="container">
+        <script src="https://cdn.bootcss.com/flv.js/1.5.0/flv.min.js"></script>
+        <video
+          id="videoElement"
+          class="responsive-video"
+          width="853"
+          height="480"
+        ></video>
+        <script>
+          if (flvjs.isSupported()) {
+            var videoElement = document.getElementById("videoElement");
+            var flvPlayer = flvjs.createPlayer({
+              type: "flv",
+              url: "http://localhost:8000/live/test.flv",
+            });
+            flvPlayer.attachMediaElement(videoElement);
+            flvPlayer.load();
+            flvPlayer.play();
+          }
+        </script>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="container">
+            <div class="col s12 m12">
+              <img id="image" class="responsive-img" />
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="container">
-      <h4 class="center">Music List</h4>
-    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.dev.js"></script>
     <script>
-      const socket = io.connect("http://localhost:3000");
+      const socket = io.connect("http://localhost:3001");
       socket.on("image", (image) => {
         const imageElm = document.getElementById("image");
         imageElm.src = `data:image/jpeg;base64,${image}`;

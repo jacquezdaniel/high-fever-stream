@@ -3,3 +3,11 @@
   height: auto;
   width: 950px;
 }
+
+#videoElement {
+  padding-top: 5rem;
+}
+
+#nav {
+  padding-left: 4rem;
+}
