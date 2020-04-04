@@ -4,7 +4,6 @@ const express = require("express");
 const app = express();
 const server = require("http").Server(app);
 const io = require("socket.io")(server);
-const html = require("./app/routing/html-routes");
 // const record = require("./app/stream/record");
 // const play = require("./app/stream/play");
 
