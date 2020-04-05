@@ -3,7 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 const allowedOrigins = [
-  "http://localhost:3000",
+  "http://localhost:8000",
   "https://mighty-gorge-82269.herokuapp.com/",
 ];
 app.use(
