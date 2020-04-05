@@ -19,8 +19,6 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
-    <link href="https://vjs.zencdn.net/7.7.5/video-js.css" rel="stylesheet" />
-    <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css" />
   </head>
   <body>
@@ -52,23 +50,6 @@
           }
         </script>
       </div>
-      <div class="container">
-        <div class="row">
-          <div class="container">
-            <div class="col s12 m12">
-              <img id="image" class="responsive-img" />
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.dev.js"></script>
-    <script>
-      const socket = io.connect("http://localhost:3001");
-      socket.on("image", (image) => {
-        const imageElm = document.getElementById("image");
-        imageElm.src = `data:image/jpeg;base64,${image}`;
-      });
-    </script>
   </body>
 </html>
