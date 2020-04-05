@@ -8,6 +8,10 @@
     "start": "node server.js",
     "watch": "nodemon server.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jacquezdaniel/high-fever-stream.git"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
