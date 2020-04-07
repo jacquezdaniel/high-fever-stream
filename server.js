@@ -6,7 +6,7 @@ const server = require("http").createServer(app);
 const io = require("socket.io")(server);
 io.on("connection", () => {});
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 app.use(cors());
 app.use(express.json());
@@ -15,6 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
 require("./routing/htmlRoutes")(app);
+require("./routing/nodeserver")(app);
 
 server.listen(PORT, () => {
   console.log(`High Fever is listening on port ${PORT}`);
